@@ -7,11 +7,11 @@ namespace BudgetManagement.Business.Validators
     {
         public ExpenseValidator()
         {
-            RuleFor(p => p.Name).NotEmpty()
-               .WithMessage("Gider alanı boş geçilemez.");
+            //RuleFor(p => p.Name).NotEmpty()
+            //   .WithMessage("Gider alanı boş geçilemez.");
 
-            RuleFor(p => p.Amount).NotEmpty()
-               .WithMessage("Miktar alanı boş geçilemez.");
+            //RuleFor(p => p.Amount).NotEmpty()
+            //   .WithMessage("Miktar alanı boş geçilemez.");
         }
     }
 }

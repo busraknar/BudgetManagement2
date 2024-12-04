@@ -8,11 +8,11 @@ namespace BudgetManagement.Business.Validators
         //Ctor yapmayı unutmaaa
         public IncomeValidator()
         {
-            RuleFor(p => p.Name).NotEmpty()
-                .WithMessage("Gelir alanı boş geçilemez.");
+            //RuleFor(p => p.Name).NotEmpty()
+            //    .WithMessage("Gelir alanı boş geçilemez.");
 
-            RuleFor(p => p.Amount).NotEmpty()
-               .WithMessage("Miktar alanı boş geçilemez.");
+            //RuleFor(p => p.Amount).NotEmpty()
+            //   .WithMessage("Miktar alanı boş geçilemez.");
         }
 
     }
