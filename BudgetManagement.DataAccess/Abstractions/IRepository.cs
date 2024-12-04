@@ -7,9 +7,9 @@ namespace BudgetManagement.DataAccess.Abstractions
     {
         void Create(T entity);
         void Update(T entity);
-        void Delete(Guid Id);
+        void Delete(int Id);
         IEnumerable<T> GetAll();
-        T GetByID(Guid Id);
+        T GetByID(int Id);
         bool IfEntityExists(Expression<Func<T, bool>> filter);
     }
 }

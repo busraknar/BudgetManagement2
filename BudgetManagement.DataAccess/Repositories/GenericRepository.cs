@@ -22,7 +22,7 @@ namespace BudgetManagement.DataAccess.Repositories
             _dbContext.SaveChanges();
         }
 
-        public void Delete(Guid Id)
+        public void Delete(int Id)
         {
             _dbSet.Remove(GetByID(Id));
             _dbContext.SaveChanges();
@@ -33,7 +33,7 @@ namespace BudgetManagement.DataAccess.Repositories
             return _dbSet.ToList();
         }
 
-        public T GetByID(Guid Id)
+        public T GetByID(int Id)
         {
             return _dbSet.FirstOrDefault(x => x.Id == Id) ?? throw new Exception("Bulunamadı");
 

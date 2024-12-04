@@ -32,7 +32,7 @@ namespace BudgetManagement.Business.Services
             _expenseRepository.Create(entity);
         }
 
-        public void Delete(Guid Id)
+        public void Delete(int Id)
         {
             var expense = _expenseRepository.GetByID(Id);
 
@@ -47,7 +47,7 @@ namespace BudgetManagement.Business.Services
             return _expenseRepository.GetAll();
         }
 
-        public Expense GetByID(Guid Id)
+        public Expense GetByID(int Id)
         {
             return _expenseRepository.GetByID(Id);
         }

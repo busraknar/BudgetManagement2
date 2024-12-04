@@ -32,7 +32,7 @@ namespace BudgetManagement.Business.Services
             _incomeRepository.Create(entity);
         }
 
-        public void Delete(Guid Id)
+        public void Delete(int Id)
         {
             var income = _incomeRepository.GetByID(Id);
 
@@ -47,7 +47,7 @@ namespace BudgetManagement.Business.Services
             return _incomeRepository.GetAll();
         }
 
-        public Income GetByID(Guid Id)
+        public Income GetByID(int Id)
         {
             return _incomeRepository.GetByID(Id);
         }

@@ -32,7 +32,7 @@ namespace BudgetManagement.Business.Services
             _categoryRepository.Create(entity);
         }
 
-        public void Delete(Guid Id)
+        public void Delete(int Id)
         {
             var category = _categoryRepository.GetByID(Id);
 
@@ -47,7 +47,7 @@ namespace BudgetManagement.Business.Services
             return _categoryRepository.GetAll();
         }
 
-        public Category GetByID(Guid Id)
+        public Category GetByID(int Id)
         {
             return _categoryRepository.GetByID(Id);
         }
