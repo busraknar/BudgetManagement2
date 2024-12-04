@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetManagement.DataAccess\BudgetManagement.DataAccess.csproj" />
+    <ProjectReference Include="..\BudgetManagement.Entities\BudgetManagement.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
