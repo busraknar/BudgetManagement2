@@ -8,4 +8,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetManagement.Business\BudgetManagement.Business.csproj" />
+    <ProjectReference Include="..\BudgetManagement.DataAccess\BudgetManagement.DataAccess.csproj" />
+    <ProjectReference Include="..\BudgetManagement.Entities\BudgetManagement.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

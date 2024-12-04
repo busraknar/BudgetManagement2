@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManagement.Entities", "BudgetManagement.Entities\BudgetManagement.Entities.csproj", "{896D9BE4-BEB1-41B6-9396-04B64A69AB05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetManagement.Entities", "BudgetManagement.Entities\BudgetManagement.Entities.csproj", "{896D9BE4-BEB1-41B6-9396-04B64A69AB05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManagement.DataAccess", "BudgetManagement.DataAccess\BudgetManagement.DataAccess.csproj", "{363ABFCF-CAEB-4A64-84C9-EEC5E8B4F5BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetManagement.DataAccess", "BudgetManagement.DataAccess\BudgetManagement.DataAccess.csproj", "{363ABFCF-CAEB-4A64-84C9-EEC5E8B4F5BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManagement.Business", "BudgetManagement.Business\BudgetManagement.Business.csproj", "{C9E994B9-FE88-4FB4-8D00-BBC662EC8866}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetManagement.Business", "BudgetManagement.Business\BudgetManagement.Business.csproj", "{C9E994B9-FE88-4FB4-8D00-BBC662EC8866}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManagment.UI", "BudgetManagment.UI\BudgetManagment.UI.csproj", "{470DA406-A451-434F-85EE-19FA4E63F84B}"
 EndProject
