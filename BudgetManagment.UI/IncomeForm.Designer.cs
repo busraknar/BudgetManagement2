@@ -35,7 +35,6 @@
             label2 = new Label();
             label3 = new Label();
             btnAddIncome = new Button();
-            btnExitIncome = new Button();
             btnAddExpense = new Button();
             label4 = new Label();
             label5 = new Label();
@@ -45,9 +44,19 @@
             txtExpenseName = new TextBox();
             label7 = new Label();
             groupBox1 = new GroupBox();
+            btnAddIncomeCategory = new Button();
+            txtOtherIncomeCategory = new TextBox();
+            label8 = new Label();
+            cmbMonth = new ComboBox();
+            btnLoadIncome = new Button();
             groupBox2 = new GroupBox();
+            btnLoadExpense = new Button();
+            dataGridView1 = new DataGridView();
+            label9 = new Label();
+            cmbMonth1 = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // txtIncomeName
@@ -101,7 +110,7 @@
             // 
             // btnAddIncome
             // 
-            btnAddIncome.Location = new Point(13, 193);
+            btnAddIncome.Location = new Point(13, 258);
             btnAddIncome.Name = "btnAddIncome";
             btnAddIncome.Size = new Size(75, 23);
             btnAddIncome.TabIndex = 6;
@@ -109,18 +118,9 @@
             btnAddIncome.UseVisualStyleBackColor = true;
             btnAddIncome.Click += btnAddIncome_Click;
             // 
-            // btnExitIncome
-            // 
-            btnExitIncome.Location = new Point(104, 193);
-            btnExitIncome.Name = "btnExitIncome";
-            btnExitIncome.Size = new Size(100, 25);
-            btnExitIncome.TabIndex = 7;
-            btnExitIncome.Text = "Formu kapat";
-            btnExitIncome.UseVisualStyleBackColor = true;
-            // 
             // btnAddExpense
             // 
-            btnAddExpense.Location = new Point(26, 193);
+            btnAddExpense.Location = new Point(26, 258);
             btnAddExpense.Name = "btnAddExpense";
             btnAddExpense.Size = new Size(75, 23);
             btnAddExpense.TabIndex = 14;
@@ -187,7 +187,11 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ActiveCaption;
-            groupBox1.Controls.Add(btnExitIncome);
+            groupBox1.Controls.Add(btnAddIncomeCategory);
+            groupBox1.Controls.Add(txtOtherIncomeCategory);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(cmbMonth);
+            groupBox1.Controls.Add(btnLoadIncome);
             groupBox1.Controls.Add(txtIncomeName);
             groupBox1.Controls.Add(txtIncomeAmount);
             groupBox1.Controls.Add(cmbIncomeCategory);
@@ -197,14 +201,61 @@
             groupBox1.Controls.Add(btnAddIncome);
             groupBox1.Location = new Point(43, 26);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(227, 224);
+            groupBox1.Size = new Size(280, 371);
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
+            // 
+            // btnAddIncomeCategory
+            // 
+            btnAddIncomeCategory.Location = new Point(208, 155);
+            btnAddIncomeCategory.Name = "btnAddIncomeCategory";
+            btnAddIncomeCategory.Size = new Size(55, 23);
+            btnAddIncomeCategory.TabIndex = 23;
+            btnAddIncomeCategory.Text = "Ekle";
+            btnAddIncomeCategory.UseVisualStyleBackColor = true;
+            btnAddIncomeCategory.Click += btnAddIncomeCategory_Click_1;
+            // 
+            // txtOtherIncomeCategory
+            // 
+            txtOtherIncomeCategory.Location = new Point(140, 153);
+            txtOtherIncomeCategory.Name = "txtOtherIncomeCategory";
+            txtOtherIncomeCategory.Size = new Size(62, 23);
+            txtOtherIncomeCategory.TabIndex = 22;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(11, 193);
+            label8.Name = "label8";
+            label8.Size = new Size(65, 15);
+            label8.TabIndex = 21;
+            label8.Text = "Ayı seçiniz:";
+            // 
+            // cmbMonth
+            // 
+            cmbMonth.FormattingEnabled = true;
+            cmbMonth.Location = new Point(13, 210);
+            cmbMonth.Name = "cmbMonth";
+            cmbMonth.Size = new Size(121, 23);
+            cmbMonth.TabIndex = 7;
+            // 
+            // btnLoadIncome
+            // 
+            btnLoadIncome.Location = new Point(72, 300);
+            btnLoadIncome.Name = "btnLoadIncome";
+            btnLoadIncome.Size = new Size(75, 55);
+            btnLoadIncome.TabIndex = 20;
+            btnLoadIncome.Text = "Gelirleri Getir";
+            btnLoadIncome.UseVisualStyleBackColor = true;
+            btnLoadIncome.Click += btnLoadIncome_Click;
             // 
             // groupBox2
             // 
             groupBox2.BackColor = Color.IndianRed;
+            groupBox2.Controls.Add(label9);
+            groupBox2.Controls.Add(cmbMonth1);
             groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(btnLoadExpense);
             groupBox2.Controls.Add(txtExpenseName);
             groupBox2.Controls.Add(txtExpenseAmount);
             groupBox2.Controls.Add(btnAddExpense);
@@ -213,15 +264,51 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Location = new Point(329, 26);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(216, 224);
+            groupBox2.Size = new Size(216, 371);
             groupBox2.TabIndex = 19;
             groupBox2.TabStop = false;
+            // 
+            // btnLoadExpense
+            // 
+            btnLoadExpense.Location = new Point(89, 300);
+            btnLoadExpense.Name = "btnLoadExpense";
+            btnLoadExpense.Size = new Size(75, 60);
+            btnLoadExpense.TabIndex = 21;
+            btnLoadExpense.Text = "Giderleri Getir";
+            btnLoadExpense.UseVisualStyleBackColor = true;
+            btnLoadExpense.Click += btnLoadExpense_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(561, 26);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(460, 371);
+            dataGridView1.TabIndex = 22;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(24, 193);
+            label9.Name = "label9";
+            label9.Size = new Size(65, 15);
+            label9.TabIndex = 23;
+            label9.Text = "Ayı seçiniz:";
+            // 
+            // cmbMonth1
+            // 
+            cmbMonth1.FormattingEnabled = true;
+            cmbMonth1.Location = new Point(26, 210);
+            cmbMonth1.Name = "cmbMonth1";
+            cmbMonth1.Size = new Size(121, 23);
+            cmbMonth1.TabIndex = 22;
             // 
             // IncomeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1033, 450);
+            Controls.Add(dataGridView1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label6);
@@ -232,6 +319,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -244,7 +332,6 @@
         private Label label2;
         private Label label3;
         private Button btnAddIncome;
-        private Button btnExitIncome;
         private Button btnAddExpense;
         private Label label4;
         private Label label5;
@@ -255,5 +342,14 @@
         private Label label7;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
+        private Button btnLoadIncome;
+        private Button btnLoadExpense;
+        private DataGridView dataGridView1;
+        private Label label8;
+        private ComboBox cmbMonth;
+        private Button btnAddIncomeCategory;
+        private TextBox txtOtherIncomeCategory;
+        private Label label9;
+        private ComboBox cmbMonth1;
     }
 }
