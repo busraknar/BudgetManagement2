@@ -9,12 +9,15 @@ using System.Text;
 namespace BudgetManagement.Business.Services
 {
     public class CategoryService : IManager<Category>
+
     {
         private readonly CategoryRepository _categoryRepository;
+
         public CategoryService(CategoryRepository pRepo)
         {
             _categoryRepository = pRepo;
         }
+
 
 
         public void Create(Category entity)
@@ -61,5 +64,7 @@ namespace BudgetManagement.Business.Services
         {
             _categoryRepository.Update(entity);
         }
+
+
     }
 }
