@@ -50,10 +50,10 @@
             cmbMonth = new ComboBox();
             btnLoadIncome = new Button();
             groupBox2 = new GroupBox();
-            btnLoadExpense = new Button();
-            dataGridView1 = new DataGridView();
             label9 = new Label();
             cmbMonth1 = new ComboBox();
+            btnLoadExpense = new Button();
+            dataGridView1 = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -268,6 +268,23 @@
             groupBox2.TabIndex = 19;
             groupBox2.TabStop = false;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(24, 193);
+            label9.Name = "label9";
+            label9.Size = new Size(65, 15);
+            label9.TabIndex = 23;
+            label9.Text = "Ayı seçiniz:";
+            // 
+            // cmbMonth1
+            // 
+            cmbMonth1.FormattingEnabled = true;
+            cmbMonth1.Location = new Point(26, 210);
+            cmbMonth1.Name = "cmbMonth1";
+            cmbMonth1.Size = new Size(121, 23);
+            cmbMonth1.TabIndex = 22;
+            // 
             // btnLoadExpense
             // 
             btnLoadExpense.Location = new Point(89, 300);
@@ -286,28 +303,11 @@
             dataGridView1.Size = new Size(460, 371);
             dataGridView1.TabIndex = 22;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(24, 193);
-            label9.Name = "label9";
-            label9.Size = new Size(65, 15);
-            label9.TabIndex = 23;
-            label9.Text = "Ayı seçiniz:";
-            // 
-            // cmbMonth1
-            // 
-            cmbMonth1.FormattingEnabled = true;
-            cmbMonth1.Location = new Point(26, 210);
-            cmbMonth1.Name = "cmbMonth1";
-            cmbMonth1.Size = new Size(121, 23);
-            cmbMonth1.TabIndex = 22;
-            // 
             // IncomeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1033, 450);
+            ClientSize = new Size(1033, 449);
             Controls.Add(dataGridView1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);

@@ -141,65 +141,6 @@ namespace BudgetManagment.UI
             var incomeRepository = new IncomeRepository(_context);
             var incomeService = new IncomeService(incomeRepository);
 
-            var selectedCategoryId = (int)cmbIncomeCategory.SelectedValue;
-            var category = _context.Categories.FirstOrDefault(c => c.Id == selectedCategoryId);
-
-
-            var income = new Income
-            {
-                Name = txtIncomeName.Text,  // Burada Name alanını formdan alıyoruz
-                Category = category.Name,   // Kategoriyi Income nesnesine atıyoruz
-                Amount = decimal.Parse(txtIncomeAmount.Text),
-                Date = DateTime.Now,
-
-            };
-
-            incomeService.Create(income);
-            MessageBox.Show("Gelir başarıyla eklendi!");
-        }
-
-
-        private void btnAddExpense_Click(object sender, EventArgs e)
-        {
-
-            var expenseRepository = new ExpenseRepository(_context);
-            var expenseService = new ExpenseService(expenseRepository);
-
-            var selectedCategoryId = (int)cmbExpenseCategory.SelectedValue;
-            var category = _context.Categories.FirstOrDefault(c => c.Id == selectedCategoryId);
-
-
-            var expense = new Expense
-            {
-                Name = txtExpenseName.Text,
-                Category = category.Name,
-                Amount = decimal.Parse(txtExpenseAmount.Text),
-                Date = DateTime.Now,
-
-            };
-
-            expenseService.Create(expense);
-            MessageBox.Show("Gider başarıyla eklendi!");
-        }
-
-        private void btnLoadIncome_Click(object sender, EventArgs e)
-        {
-
-            //var incomes = _context.Incomes.Select(x => new
-            //{
-            //    x.Name,
-            //    x.Amount,
-            //    x.Date,
-            //    Category = x.Category // Eğer kategori ilişkiliyse
-            //}).ToList();
-
-            //// DataGridView'e verileri bağla
-            //dataGridView1.DataSource = incomes;
-            //dataGridView1.Columns["Date"].HeaderText = "Tarih";
-            //dataGridView1.Columns["Name"].HeaderText = "Gelir Adı";
-            //dataGridView1.Columns["Amount"].HeaderText = "Tutar";
-            //dataGridView1.Columns["Category"].HeaderText = "Kategori";
-
             if (cmbMonth.SelectedIndex == -1)
             {
                 MessageBox.Show("Lütfen bir ay seçiniz!", "Uyarı");
@@ -209,42 +150,140 @@ namespace BudgetManagment.UI
             // Seçilen ayı al
             int selectedMonth = (int)cmbMonth.SelectedValue;
 
-            // Gelirleri listele
-            var incomes = _context.Incomes
-                .Where(x => x.Date.Month == selectedMonth)
+            // Seçilen aya göre bir tarih oluştur
+            DateTime incomeDate = new DateTime(DateTime.Now.Year, selectedMonth, 1); // Ayın ilk günü
+
+            var selectedCategoryId = (int)cmbIncomeCategory.SelectedValue;
+            var category = _context.Categories.FirstOrDefault(c => c.Id == selectedCategoryId);
+
+            var income = new Income
+            {
+                Name = txtIncomeName.Text,
+                Category = category.Name,
+                Amount = decimal.Parse(txtIncomeAmount.Text),
+                Date = incomeDate // Seçilen tarih
+            };
+
+            try
+            {
+                incomeService.Create(income);
+                MessageBox.Show("Gelir başarıyla eklendi!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Gelir eklenirken hata oluştu: {ex.Message}", "Hata");
+            }
+        }
+
+
+        private void btnAddExpense_Click(object sender, EventArgs e)
+        {
+
+            var expenseRepository = new ExpenseRepository(_context);
+            var expenseService = new ExpenseService(expenseRepository);
+
+
+            if (cmbMonth.SelectedIndex == -1)
+            {
+                MessageBox.Show("Lütfen bir ay seçiniz!", "Uyarı");
+                return;
+            }
+
+            // Seçilen ayı al
+            int selectedMonth = (int)cmbMonth1.SelectedValue;
+
+            // Seçilen aya göre bir tarih oluştur
+            DateTime expenseDate = new DateTime(DateTime.Now.Year, selectedMonth, 1); // Ayın ilk günü
+
+            var selectedCategoryId = (int)cmbExpenseCategory.SelectedValue;
+            var category = _context.Categories.FirstOrDefault(c => c.Id == selectedCategoryId);
+
+            var expense = new Expense
+            {
+                Name = txtExpenseName.Text,
+                Category = category.Name,
+                Amount = decimal.Parse(txtExpenseAmount.Text),
+                Date = expenseDate // Seçilen tarih
+            };
+
+            try
+            {
+                expenseService.Create(expense);
+                MessageBox.Show("Gider başarıyla eklendi!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Gider eklenirken hata oluştu: {ex.Message}", "Hata");
+            }
+        }
+
+        private void btnLoadIncome_Click(object sender, EventArgs e)
+        {
+            // Data sorgusu yapıyoruz.
+            IQueryable<Income> incomeQuery = _context.Incomes;
+
+            // Eğer bir ay seçildiyse, sorguyu filtreleyelim 
+
+            if (cmbMonth.SelectedIndex != -1)
+            {
+                // Seçilen ayı aldık
+                int selectedMonth = (int)cmbMonth.SelectedValue;
+
+                // Sorguya ay filtresi ekle
+                incomeQuery = incomeQuery.Where(x => x.Date.Month == selectedMonth);
+            }
+
+            // Gelirleri listeleyelim
+            var incomes = incomeQuery
                 .Select(x => new
                 {
                     x.Name,
                     x.Amount,
                     x.Date,
-                    Category = x.Category // Kategori adını dahil et
+                    Category = x.Category
                 })
                 .ToList();
 
             // DataGridView'e verileri bağla
             dataGridView1.DataSource = incomes;
 
-            // Kolon başlıklarını düzenle
+
             dataGridView1.Columns["Date"].HeaderText = "Tarih";
             dataGridView1.Columns["Name"].HeaderText = "Gelir Adı";
             dataGridView1.Columns["Amount"].HeaderText = "Tutar";
             dataGridView1.Columns["Category"].HeaderText = "Kategori";
+
         }
 
         private void btnLoadExpense_Click(object sender, EventArgs e)
         {
-            var expense = _context.Expenses.Select(x => new
-            {
-                x.Name,
-                x.Amount,
-                x.Date,
-                Category = x.Category // Eğer kategori ilişkiliyse
-            }).ToList();
 
-            // DataGridView'e verileri bağla
-            dataGridView1.DataSource = expense;
+            IQueryable<Expense> expenseQuery = _context.Expenses;
+
+
+            if (cmbMonth.SelectedIndex != -1)
+            {
+                // Seçilen ayı al
+                int selectedMonth = (int)cmbMonth.SelectedValue;
+                expenseQuery = expenseQuery.Where(x => x.Date.Month == selectedMonth);
+            }
+
+            // Giderleri listeleyelimm
+            var expenses = expenseQuery
+                .Select(x => new
+                {
+                    x.Name,
+                    x.Amount,
+                    x.Date,
+                    Category = x.Category
+                })
+                .ToList();
+
+
+            dataGridView1.DataSource = expenses;
+
             dataGridView1.Columns["Date"].HeaderText = "Tarih";
-            dataGridView1.Columns["Name"].HeaderText = "Gelir Adı";
+            dataGridView1.Columns["Name"].HeaderText = "Gider Adı";
             dataGridView1.Columns["Amount"].HeaderText = "Tutar";
             dataGridView1.Columns["Category"].HeaderText = "Kategori";
         }
