@@ -54,6 +54,8 @@
             cmbMonth1 = new ComboBox();
             btnLoadExpense = new Button();
             dataGridView1 = new DataGridView();
+            btnAddExpenseCategory = new Button();
+            txtOtherExpenseCategory = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -252,6 +254,8 @@
             // groupBox2
             // 
             groupBox2.BackColor = Color.IndianRed;
+            groupBox2.Controls.Add(btnAddExpenseCategory);
+            groupBox2.Controls.Add(txtOtherExpenseCategory);
             groupBox2.Controls.Add(label9);
             groupBox2.Controls.Add(cmbMonth1);
             groupBox2.Controls.Add(label7);
@@ -264,7 +268,7 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Location = new Point(329, 26);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(216, 371);
+            groupBox2.Size = new Size(348, 371);
             groupBox2.TabIndex = 19;
             groupBox2.TabStop = false;
             // 
@@ -298,10 +302,27 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(561, 26);
+            dataGridView1.Location = new Point(683, 26);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(460, 371);
+            dataGridView1.Size = new Size(338, 371);
             dataGridView1.TabIndex = 22;
+            // 
+            // btnAddExpenseCategory
+            // 
+            btnAddExpenseCategory.Location = new Point(240, 155);
+            btnAddExpenseCategory.Name = "btnAddExpenseCategory";
+            btnAddExpenseCategory.Size = new Size(55, 23);
+            btnAddExpenseCategory.TabIndex = 25;
+            btnAddExpenseCategory.Text = "Ekle";
+            btnAddExpenseCategory.UseVisualStyleBackColor = true;
+            btnAddExpenseCategory.Click += btnAddExpenseCategory_Click;
+            // 
+            // txtOtherExpenseCategory
+            // 
+            txtOtherExpenseCategory.Location = new Point(172, 153);
+            txtOtherExpenseCategory.Name = "txtOtherExpenseCategory";
+            txtOtherExpenseCategory.Size = new Size(62, 23);
+            txtOtherExpenseCategory.TabIndex = 24;
             // 
             // IncomeForm
             // 
@@ -351,5 +372,7 @@
         private TextBox txtOtherIncomeCategory;
         private Label label9;
         private ComboBox cmbMonth1;
+        private Button btnAddExpenseCategory;
+        private TextBox txtOtherExpenseCategory;
     }
 }
