@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "Busra": "Data Source=DESKTOP-BCNGC9H\\SQLEXPRESS01;Initial Catalog=BudgetDB;Integrated Security=True; Trust Server Certificate = True",
+    "Beyzanur": "Data Source=.;Initial Catalog=BudgetDB;Integrated Security=True; Trust Server Certificate = True"
+  }
+}

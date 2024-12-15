@@ -1,5 +1,8 @@
 ﻿using BudgetManagement.Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Protocols;
+using System.Configuration;
 
 namespace BudgetManagement.DataAccess.Context
 {
@@ -11,21 +14,16 @@ namespace BudgetManagement.DataAccess.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-BCNGC9H\SQLEXPRESS01;Initial Catalog=BudgetDB;Integrated Security=True; Trust Server Certificate = True");
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("Database.json", optional: false, reloadOnChange: true)
+                .Build();
+            string connectionString = configuration.GetConnectionString("Beyzanur");
+            optionsBuilder.UseSqlServer(connectionString);
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //DB tablolarımız oluşturulurken onlara müdehale edebiliriz.
-
-
-            //modelBuilder.Entity<Income>().HasOne<Category>().WithMany().
-            //    HasForeignKey(i => i.Category);
-
-            //modelBuilder.Entity<Expense>().HasOne<Category>().WithMany().
-            //   HasForeignKey(e => e.Category);
-
+            base.OnModelCreating(modelBuilder);
         }
 
     }
